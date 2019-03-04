@@ -14,6 +14,7 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] float upThrust = 2000f;
     //public float thrust = 150f;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
