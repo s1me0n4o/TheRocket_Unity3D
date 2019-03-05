@@ -17,6 +17,9 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] public AudioClip dead;
     //public float thrust = 150f;
 
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] public ParticleSystem successParticles;
+    [SerializeField] public ParticleSystem deadParticles;
 
     void Start()
     {
@@ -35,14 +38,16 @@ public class RocketMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(upFroce * upThrust);
+            rb.AddRelativeForce(upFroce * upThrust * Time.deltaTime);
             //rocketSound.enabled = true;
             rocketSound.PlayOneShot(mainEngine);
+            mainEngineParticles.Play();
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             //rocketSound.enabled = false;
             rocketSound.Stop();
+            mainEngineParticles.Stop();
         }
     }
 

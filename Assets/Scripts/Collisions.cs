@@ -9,38 +9,34 @@ public class Collisions : MonoBehaviour
     private GameObject player;
     RocketMovement rocketMovement;
 
-    //private AudioClip succsess;
-    //private AudioClip dead;
+    private AudioClip succsess;
+    private AudioClip dead;
     public static AudioSource rocketSound;
-
 
     void Start()
     {
         player = gameObject;
         rocketMovement = player.GetComponent<RocketMovement>();
-       // succsess = rocketMovement.success;
-      //  dead = rocketMovement.dead;
+        succsess = rocketMovement.success;
+        dead = rocketMovement.dead;
         rocketSound = player.GetComponent<AudioSource>();
-        //rocketSound.PlayOneShot(dead);
     }
 
     void OnCollisionEnter(Collision other)
     {
-        
-        if (!other.gameObject.CompareTag("Friendly"))// || Fluel == 0)
-        {
-            EndGame(gameObject);
-        }
-        
         if (gameHasEnded == true) { return; } // ignor collision when dead
 
         if (other.gameObject.CompareTag("Finish"))
         {
-            rocketSound.PlayOneShot(gameObject.GetComponent<RocketMovement>().success);            //need to check this sound it doesnt work
+            rocketSound.PlayOneShot(player.GetComponent<RocketMovement>().success);            //need to check this sound it doesnt work gameObject.GetComponent<RocketMovement>().success
+            rocketMovement.successParticles.Play();
             print("You Win");
-            manageScenes.LoadNextLevel();
+            GetComponent<ManageScenes>().Invoke("LoadNextLevel", delay);
         }
-                
+        else if(!other.gameObject.CompareTag("Friendly"))// || Fluel == 0)
+        {
+            EndGame(gameObject);
+        }
     }
 
     void EndGame(GameObject player)
@@ -51,11 +47,11 @@ public class Collisions : MonoBehaviour
             gameHasEnded = true;
             Debug.Log("Game Over");
             EndGame(player);
+            rocketMovement.deadParticles.Play();
+            rocketSound.PlayOneShot(dead);            //need to check this sound it doesnt work
 
-            rocketSound.PlayOneShot(player.GetComponent<RocketMovement>().dead);                //need to check this sound it doesnt work
-
-            player.SetActive(false);
-            //Destroy(player);
+            //player.SetActive(false);
+           // Destroy(player);
 
             Invoke("Restart", delay);
         }
@@ -65,5 +61,6 @@ public class Collisions : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 
 }
