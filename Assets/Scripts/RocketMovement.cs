@@ -8,10 +8,13 @@ public class RocketMovement : MonoBehaviour
     Rigidbody rb;
     Vector3 upFroce = Vector3.up; // .up is equal to Y axes
     Vector3 leftForce = Vector3.forward; // .forward is equal to Z axes
-    AudioSource rocketSound;
+    public static AudioSource rocketSound;
 
     [SerializeField] float thrust = 200;
     [SerializeField] float upThrust = 2000f;
+    [SerializeField] AudioClip mainEngine;
+    [SerializeField] public AudioClip success;
+    [SerializeField] public AudioClip dead;
     //public float thrust = 150f;
 
 
@@ -33,11 +36,13 @@ public class RocketMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddRelativeForce(upFroce * upThrust);
-            rocketSound.enabled = true;
+            //rocketSound.enabled = true;
+            rocketSound.PlayOneShot(mainEngine);
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            rocketSound.enabled = false;
+            //rocketSound.enabled = false;
+            rocketSound.Stop();
         }
     }
 

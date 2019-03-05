@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1934681737457351093}
   m_Layer: 0
   m_Name: boddy.belt
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2218284083232363834}
   m_Layer: 0
   m_Name: win.001
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 9197958352762651688}
   m_Layer: 0
   m_Name: boddy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 1484912727580331885}
   m_Layer: 0
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 3519861537692544267}
   m_Layer: 0
   m_Name: Arm
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,9 +412,10 @@ GameObject:
   - component: {fileID: 1960664505}
   - component: {fileID: 2136278316428820898}
   - component: {fileID: 1960664506}
+  - component: {fileID: 1231901981}
   m_Layer: 0
   m_Name: AtomRocket Variant (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,6 +472,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 200
   upThrust: 2000
+  mainEngine: {fileID: 8300000, guid: b9dfdf2e4dfd03949b5d91fa9a9da103, type: 3}
+  success: {fileID: 8300000, guid: 499b0545e1fb15043bbad82b4ab3e221, type: 3}
+  dead: {fileID: 8300000, guid: c4cca141a6b84624498b299668ba6a2c, type: 3}
 --- !u!82 &2136278316428820898
 AudioSource:
   m_ObjectHideFlags: 0
@@ -478,10 +482,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7189836888341107766}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 21e0b7b97ef9294449f76f8d176c31bf, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 0.6
@@ -579,6 +583,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a71b6f15f0ec34a9ae2e5d0201581d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manageScenes: {fileID: 1231901981}
+  succsess: {fileID: 0}
+  dead: {fileID: 0}
+--- !u!114 &1231901981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189836888341107766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f92f05b5a85f741905c811e2c2e786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7323866048057496774
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +611,7 @@ GameObject:
   - component: {fileID: 4304226094054755328}
   m_Layer: 0
   m_Name: nute
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -669,7 +688,7 @@ GameObject:
   - component: {fileID: 4748508995080236302}
   m_Layer: 0
   m_Name: win-frem
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -746,7 +765,7 @@ GameObject:
   - component: {fileID: 4267327807893063745}
   m_Layer: 0
   m_Name: fire-nozzle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
