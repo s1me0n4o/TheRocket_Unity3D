@@ -34,7 +34,7 @@ public class RocketMovement : MonoBehaviour
     }
 
     //MovementUpside and audio
-    private void PowerAndAudio()
+    public void PowerAndAudio()
     {
         if (Input.GetKey(KeyCode.Space))
         {

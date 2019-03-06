@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Collisions : MonoBehaviour
@@ -6,6 +8,7 @@ public class Collisions : MonoBehaviour
     public ManageScenes manageScenes;
     private bool gameHasEnded = false;
     private float delay = 1f;
+    private float killDelay = 0.5f;
     private GameObject player;
     RocketMovement rocketMovement;
 
@@ -46,6 +49,7 @@ public class Collisions : MonoBehaviour
            // rocketSound.Stop();
             gameHasEnded = true;
             Debug.Log("Game Over");
+            //player.GetComponent<MeshRenderer>().enabled = false;
             EndGame(player);
             rocketMovement.deadParticles.Play();
             rocketSound.PlayOneShot(dead);            //need to check this sound it doesnt work
@@ -63,4 +67,9 @@ public class Collisions : MonoBehaviour
     }
 
 
+    //private IEnumerator DeactivePlayer(float duration)
+    //{
+    //    yield return new WaitForSeconds(duration);
+    //    player.SetActive(false);
+    //}
 }
