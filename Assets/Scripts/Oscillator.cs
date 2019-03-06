@@ -24,12 +24,18 @@ public class Oscillator : MonoBehaviour
     void Update()
     {
         //set movement factor authomaticly 
+        //protect from devided of 0 (Mathf.Epsilon is the smallest float that we can have)
+        if (period <= Mathf.Epsilon)
+        {
+            return;
+        }
+
         float cycles = Time.time / period; //the cycles that we are going through will grows constantly from 0
 
         const float tau = Mathf.PI * 2f; //about 6.28
-        float rawSinWave = Mathf.Sin(cycles * tau);
+        float rawSinWave = Mathf.Sin(cycles * tau); // goest from -1 to +1
 
-        movementRange = rawSinWave / 2f + 0.5f;
+        movementRange = rawSinWave / 2f + 0.5f; //sicne we need a range between -1 and +1 we have to sum the divided rawSinWave / 2f with 0.5f
 
         Vector3 offset = movementVector * movementRange;
         transform.position = startingPos + offset;
