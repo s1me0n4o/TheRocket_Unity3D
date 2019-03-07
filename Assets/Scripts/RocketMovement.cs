@@ -31,6 +31,10 @@ public class RocketMovement : MonoBehaviour
     {
         PowerAndAudio();
         RocketRotation();
+        if (Debug.isDebugBuild)
+        {
+            ResponeToDebugKey();
+        }
     }
 
     //MovementUpside and audio
@@ -70,5 +74,13 @@ public class RocketMovement : MonoBehaviour
             }
 
         rb.freezeRotation = false; //resume physics control of rotation
+    }
+
+    private void ResponeToDebugKey()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GetComponent<ManageScenes>().LoadNextLevel();
+        }
     }
 }
